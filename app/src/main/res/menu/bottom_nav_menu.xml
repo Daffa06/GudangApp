@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_master_material"
+        android:title="Master Material" />
+    <item
+        android:id="@+id/navigation_master_stock"
+        android:title="Master Stock" />
+    <item
+        android:id="@+id/navigation_permintaan_material"
+        android:title="Permintaan Material" />
+    <item
+        android:id="@+id/navigation_permintaan_material_list"
+        android:title="Daftar Permintaan" />
+</menu>
