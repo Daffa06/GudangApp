@@ -2,11 +2,13 @@ package com.example.testgudang.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.testgudang.data.GudangDatabase
 import com.example.testgudang.data.entity.*
 import com.example.testgudang.data.repository.GudangRepository
 import kotlinx.coroutines.launch
+import com.example.testgudang.data.repository.MasterBarangRepository
 
 class GudangViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -14,7 +16,7 @@ class GudangViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         val gudangDao = GudangDatabase.getDatabase(application).gudangDao()
-        repository = GudangRepository(gudangDao)
+        repository = MasterBarangRepository(gudangDao)
     }
 
     // Master Barang

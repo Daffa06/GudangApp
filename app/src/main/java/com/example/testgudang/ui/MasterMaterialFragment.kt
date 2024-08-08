@@ -13,6 +13,9 @@ import com.example.testgudang.viewmodel.GudangViewModel
 import com.example.testgudang.viewmodel.GudangViewModelFactory
 import kotlinx.coroutines.launch
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.testgudang.adapter.*
+import com.example.testgudang.data.entity.*
 
 class MasterMaterialFragment : Fragment() {
 
@@ -24,7 +27,17 @@ class MasterMaterialFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMasterMaterialBinding.inflate(inflater, container, false)
+        val binding = FragmentMasterMaterialBinding.inflate(inflater, container, false)
+
+        adapter = MasterBarangAdapter()
+        binding.rvBarang.adapter = adapter
+        binding.rvBarang.layoutManager = LinearLayoutManager(requireContext())
+
+        gudangViewModel = ViewModelProvider(this).get(GudangViewModel::class.java)
+        gudangViewModel.MasterBarang.observe(viewLifecycleOwner, { barang ->
+            adapter.setData(barang)
+        })
+
         return binding.root
     }
 
