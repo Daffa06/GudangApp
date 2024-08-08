@@ -8,7 +8,6 @@ import com.example.testgudang.data.GudangDatabase
 import com.example.testgudang.data.entity.*
 import com.example.testgudang.data.repository.GudangRepository
 import kotlinx.coroutines.launch
-import com.example.testgudang.data.repository.MasterBarangRepository
 
 class GudangViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -16,7 +15,7 @@ class GudangViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         val gudangDao = GudangDatabase.getDatabase(application).gudangDao()
-        repository = MasterBarangRepository(gudangDao)
+        repository = GudangRepository(gudangDao)
     }
 
     // Master Barang

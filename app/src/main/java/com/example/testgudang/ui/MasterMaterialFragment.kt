@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.observe
+import androidx.lifecycle.Observer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +21,7 @@ import com.example.testgudang.data.entity.*
 
 class MasterMaterialFragment : Fragment() {
 
+    private lateinit var adapter: MasterBarangAdapter
     private var _binding: FragmentMasterMaterialBinding? = null
     private val binding get() = _binding!!
     private lateinit var gudangViewModel: GudangViewModel
@@ -34,7 +37,7 @@ class MasterMaterialFragment : Fragment() {
         binding.rvBarang.layoutManager = LinearLayoutManager(requireContext())
 
         gudangViewModel = ViewModelProvider(this).get(GudangViewModel::class.java)
-        gudangViewModel.MasterBarang.observe(viewLifecycleOwner, { barang ->
+        gudangViewModel.getAllMasterBarang().observe(viewLifecycleOwner, Observer { barang ->
             adapter.setData(barang)
         })
 

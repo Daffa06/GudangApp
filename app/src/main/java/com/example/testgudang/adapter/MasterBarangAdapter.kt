@@ -13,13 +13,13 @@ class MasterBarangAdapter : RecyclerView.Adapter<MasterBarangAdapter.MasterBaran
     private var barangList = emptyList<MasterBarang>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MasterBarangViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_barang as Int, parent, false) as View
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_master_material, parent, false) as View
         return MasterBarangViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MasterBarangViewHolder, position: Int) {
         val currentItem = barangList[position]
-        holder.itemView.findViewById<TextView>(R.id.tvNamaBarang).text = currentItem.namaBarang
+        holder.itemView.findViewById<TextView>(R.id.rvBarang).text = currentItem.namaBarang
         // Set other item views
     }
 
