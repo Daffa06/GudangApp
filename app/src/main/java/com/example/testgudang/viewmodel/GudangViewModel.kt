@@ -2,6 +2,8 @@ package com.example.testgudang.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.testgudang.data.GudangDatabase
 import com.example.testgudang.data.entity.*
@@ -22,12 +24,8 @@ class GudangViewModel(application: Application) : AndroidViewModel(application) 
         repository.insertMasterBarang(masterBarang)
     }
 
-    fun getAllMasterBarang(): List<MasterBarang> {
-        var data: List<MasterBarang> = emptyList()
-        viewModelScope.launch {
-            data = repository.getAllMasterBarang()
-        }
-        return data
+    fun getAllMasterBarang(): LiveData<List<MasterBarang>> = liveData {
+        emitSource(repository.getAllMasterBarang())
     }
 
     // Master Barang Stock

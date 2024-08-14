@@ -1,5 +1,6 @@
 package com.example.testgudang.data.repository
 
+import androidx.lifecycle.LiveData
 import com.example.testgudang.data.GudangDao
 import com.example.testgudang.data.entity.*
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,7 @@ class GudangRepository(private val gudangDao: GudangDao) {
         }
     }
 
-    suspend fun getAllMasterBarang(): List<MasterBarang> {
+    suspend fun getAllMasterBarang(): LiveData<List<MasterBarang>> {
         return withContext(Dispatchers.IO) {
             gudangDao.getAllMasterBarang()
         }

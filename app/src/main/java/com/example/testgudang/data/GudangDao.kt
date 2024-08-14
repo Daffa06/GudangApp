@@ -1,5 +1,6 @@
 package com.example.testgudang.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.testgudang.data.entity.*
 
@@ -10,7 +11,7 @@ interface GudangDao {
     fun insertMasterBarang(masterBarang: MasterBarang): Long
 
     @Query("SELECT * FROM master_barang")
-    fun getAllMasterBarang(): List<MasterBarang>
+    fun getAllMasterBarang(): LiveData<List<MasterBarang>>
 
     // Master Barang Stock
     @Insert(onConflict = OnConflictStrategy.REPLACE)
