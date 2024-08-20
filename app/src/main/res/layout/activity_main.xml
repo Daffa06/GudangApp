@@ -10,6 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/navView" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navView"
             android:layout_width="match_parent"
@@ -18,12 +24,6 @@
             app:layout_anchor="@+id/nav_host_fragment"
             app:layout_anchorGravity="bottom|center"
             app:menu="@menu/bottom_nav_menu" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/navView" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
