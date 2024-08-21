@@ -21,29 +21,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.navView.setOnNavigationItemSelectedListener { item ->
-            var selectedFragment: Fragment = MasterMaterialFragment()
-            when (item.itemId) {
-                R.id.navigation_master_material -> {
-                    selectedFragment = MasterMaterialFragment()
-                }
-                R.id.navigation_master_stock -> {
-                    selectedFragment = MasterStockFragment()
-                }
-                R.id.navigation_permintaan_material -> {
-                    selectedFragment = PermintaanMaterialFragment()
-                }
-                R.id.navigation_permintaan_material_list -> {
-                    selectedFragment = PermintaanMaterialListFragment()
-                }
-            }
-            supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).commit()
-            true
-        }
-
-        // Set default selection
-        binding.navView.selectedItemId = R.id.navigation_master_material
-
         // Initialize FloatingActionButton
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
