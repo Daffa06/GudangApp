@@ -5,47 +5,82 @@
             name="viewModel"
             type="com.example.testgudang.viewmodel.GudangViewModel" />
     </data>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/etKodeBarang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Kode Barang" />
-
-        <EditText
-            android:id="@+id/etNamaBarang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nama Barang" />
-
-        <EditText
-            android:id="@+id/etKeterangan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Keterangan" />
-
-        <EditText
-            android:id="@+id/etSatuan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Satuan" />
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save" />
-
+        <!-- TextView untuk Nama Barang -->
         <TextView
             android:id="@+id/textViewBarang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nama Barang"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:textSize="16sp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"/>
+
+        <!-- RecyclerView untuk menampilkan daftar barang -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBarang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewBarang"
+            android:layout_marginTop="10dp"/>
+
+        <!-- FloatingActionButton untuk menambah barang -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/menu_1"
+            android:contentDescription="Add Item" />
+
+            <!-- LinearLayout untuk form input -->
+            <LinearLayout
+                android:id="@+id/formLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_alignParentTop="true"
+                android:visibility="gone"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:id="@+id/etKodeBarang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kode Barang" />
+
+                <EditText
+                    android:id="@+id/etNamaBarang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Barang" />
+
+                <EditText
+                    android:id="@+id/etKeterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Keterangan" />
+
+                <EditText
+                    android:id="@+id/etSatuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Satuan" />
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </layout>

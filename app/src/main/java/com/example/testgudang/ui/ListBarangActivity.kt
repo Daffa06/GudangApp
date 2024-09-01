@@ -20,12 +20,21 @@ class ListBarangActivity : AppCompatActivity() {
         binding = ActivityListBarangBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = BarangAdapter(this)
-        binding.recyclerViewBarang.layoutManager = LinearLayoutManager(this)
-        binding.recyclerViewBarang.adapter = adapter
+        setupRecyclerView()
+        observeViewModel()
+    }
 
+    private fun setupRecyclerView() {
+        adapter = BarangAdapter()
+        binding.recyclerViewBarang.apply {
+            layoutManager = LinearLayoutManager(this@ListBarangActivity)
+            adapter = this@ListBarangActivity.adapter
+        }
+    }
+
+    private fun observeViewModel() {
         viewModel.allBarang.observe(this) { barangList ->
-            adapter.setBarangList(barangList)
+            adapter.submitList(barangList)
         }
     }
 }
