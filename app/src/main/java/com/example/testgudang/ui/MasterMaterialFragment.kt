@@ -67,6 +67,7 @@ class MasterMaterialFragment : Fragment() {
                         // Sembunyikan form dan tampilkan kembali RecyclerView
                         binding.formLayout.visibility = View.GONE
                         binding.recyclerViewBarang.visibility = View.VISIBLE
+                        binding.textViewBarang.visibility = View.VISIBLE
                         // Update UI atau beri pesan bahwa data berhasil disimpan
                     } catch (e: Exception) {
                         Log.e("Save", "Error saat menyimpan data", e)
@@ -89,6 +90,7 @@ class MasterMaterialFragment : Fragment() {
         // Observe LiveData dari ViewModel untuk memperbarui daftar barang
         gudangViewModel.getAllMasterBarang().observe(viewLifecycleOwner, { barangList ->
             barangList?.let {
+                Log.d("MasterMaterialFragment", "Barang List: $barangList")
                 barangAdapter.submitList(it)
             }
         })
@@ -100,10 +102,12 @@ class MasterMaterialFragment : Fragment() {
             if (binding.formLayout.visibility == View.GONE) {
                 binding.formLayout.visibility = View.VISIBLE
                 binding.recyclerViewBarang.visibility = View.GONE
+                binding.textViewBarang.visibility = View.GONE
                 binding.etKodeBarang.requestFocus()
             } else {
                 binding.formLayout.visibility = View.GONE
                 binding.recyclerViewBarang.visibility = View.VISIBLE
+                binding.textViewBarang.visibility = View.VISIBLE
             }
         }
     }
